@@ -2,7 +2,7 @@
 
 [![size](https://img.shields.io/bundlephobia/minzip/perfectly-scrollable?style=for-the-badge)](https://bundlephobia.com/package/perfectly-scrollable)
 [![](https://img.shields.io/npm/v/perfectly-scrollable?style=for-the-badge)](https://www.npmjs.com/package/perfectly-scrollable)
-![](https://img.shields.io/npm/dw/perfectly-scrollable?style=for-the-badge)
+[![](https://img.shields.io/npm/dw/perfectly-scrollable?style=for-the-badge)](https://www.npmjs.com/package/perfectly-scrollable)
 
 SolidJS higher-order component for [Perfect Scrollbar](https://perfectscrollbar.com/).
 
@@ -20,7 +20,11 @@ Define a scrollable component like this:
 import { PerfectlyScrollable } from 'perfectly-scrollable';
 import { Component } from 'solid-js';
 
-const MyComponent: Component<{ ref?: JSX.IntrinsicAttributes['ref'], title: string }> => (props) => {
+export interface MyComponentProps {
+  ref?: JSX.IntrinsicAttributes['ref'];
+  title: string;
+} 
+const MyComponent: Component<MyComponentProps> => (props) => {
   return (
     // Make sure to pass the ref down to the element you want to make scrollable
     // You should also make sure the CSS position property is set on the element
@@ -36,7 +40,7 @@ export default PerfectlyScrollable(MyComponent);
 The resulting component props will include all `MyComponent` props and [all Perfect Scrollbar props](https://perfectscrollbar.com/#section-options):
 ```tsx
 // App.tsx
-import { MyComponent } from './MyComponent.tsx';
+import MyComponent from './MyComponent.tsx';
 import { Component } from 'solid-js';
 
 export default () => {
@@ -54,10 +58,18 @@ import { Component } from 'solid-js';
 
 const ScrollableDiv = PerfectlyScrollable('div');
 
-const MyComponent: Component<{ ref?: JSX.IntrinsicAttributes['ref'], title: string }> => (props) => {
+export interface MyComponentProps {
+  ref?: JSX.IntrinsicAttributes['ref'];
+  title: string;
+} 
+const MyComponent: Component<MyComponentProps> => (props) => {
   return (
-    // Don't forget to set the position property
-    <ScrollableDiv ref={props.ref} style={{ position: 'relative' }} suppressScrollX>
+    <ScrollableDiv
+      ref={props.ref}
+      // Don't forget to set the position property
+      style={{ position: 'relative' }}
+      suppressScrollX
+    >
       <h1>{props.title}</h1>
     </ScrollableDiv>
   );
