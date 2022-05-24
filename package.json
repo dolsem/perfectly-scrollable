@@ -1,0 +1,42 @@
+{
+  "name": "perfectly-scrollable",
+  "version": "0.2.0",
+  "description": "SolidJS HOC for Perfect Scrollbar",
+  "author": "Denis Olsem",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dolsem/perfectly-scrollable.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dolsem/perfectly-scrollable/issues"
+  },
+  "homepage": "https://github.com/dolsem/perfectly-scrollable#readme",
+  "scripts": {
+    "build": "tsc"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "solid": "./dist/index.js",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "solid",
+    "scrollbar",
+    "bootstrap",
+    "perfect-scrollbar"
+  ],
+  "dependencies": {
+    "perfect-scrollbar": "^1.5.5",
+    "solid-js": "^1.3.16"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
+}
