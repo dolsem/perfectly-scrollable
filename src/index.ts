@@ -50,7 +50,8 @@ export function PerfectlyScrollable<P extends PropsWithRef, T extends keyof JSX.
         }, others);
 
         onMount(() => {
-          new PerfectScrollbar(ref, scrollbarOptions);
+          // ref value is not always set by the time onMount runs, so make this async
+          setTimeout(() => new PerfectScrollbar(ref, scrollbarOptions), 0);
         });
         if (typeof component === 'string') {
           const el = (element as Element).cloneNode(true) as Element;
